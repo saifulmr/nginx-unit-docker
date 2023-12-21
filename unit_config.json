@@ -1,0 +1,41 @@
+{
+    "listeners": {
+        "*:80": {
+            "pass": "routes"
+        }
+    },
+
+    "routes": [
+        {
+            "match": {
+                "uri": [
+                    "*.php",
+                    "*/"
+                ]
+            },
+
+            "action": {
+                "pass": "applications/phpapp"
+            }
+        },
+        {
+            "action": {
+                "share": "/var/www$uri"
+            }
+        }
+    ],
+
+    "applications": {
+        "phpapp": {
+            "type": "php",
+            "root": "/var/www"
+        }
+    },
+
+    "settings": {
+        "http": {
+            "server_version": false
+      }
+    }
+
+}
